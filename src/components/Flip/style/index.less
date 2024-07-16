@@ -1,0 +1,102 @@
+@import '../../../styles/var.less';
+
+.@{rv-prefix}-flip {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 1000px;
+  .back,
+  .front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-origin: 50% 50%;
+    backface-visibility: hidden;
+    // transition: all 1s ease-in-out;
+  }
+  .back {
+    transform: rotateY(-180deg);
+  }
+  .front {
+    transform: rotateY(0deg);
+  }
+  .back.active,
+  .front.active {
+    animation-name: turnFront;
+    animation-duration: var(--duration, 2s);
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: var(--iterationCount, 1);
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+  }
+
+  .front.active {
+    animation-name: turnBack;
+  }
+  .back.reset,
+  .front.reset {
+    transform: rotateY(0deg);
+    animation-name: resetBack;
+    animation-duration: var(--resetDuration, 1s);
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+  }
+  .front.reset {
+    transform: rotateY(180deg);
+    animation-name: turnFront;
+  }
+
+  .back.up-down {
+    transform: rotateX(-180deg);
+  }
+  .front.up-down {
+    transform: rotateX(0deg);
+  }
+  .back.up-down.active {
+    animation-name: verticalFront;
+  }
+  .front.up-down.active {
+    animation-name: verticalBack;
+  }
+  .back.up-down.reset {
+    transform: rotateX(0deg);
+    animation-name: verticalReset;
+  }
+  .front.up-down.reset {
+    transform: rotateX(180deg);
+    animation-name: verticalFront;
+  }
+  @keyframes turnBack {
+    to {
+      transform: rotateY(180deg);
+    }
+  }
+  @keyframes turnFront {
+    to {
+      transform: rotateY(0deg);
+    }
+  }
+  @keyframes resetBack {
+    to {
+      transform: rotateY(-180deg);
+    }
+  }
+
+  @keyframes verticalBack {
+    to {
+      transform: rotateX(180deg);
+    }
+  }
+  @keyframes verticalFront {
+    to {
+      transform: rotateX(0deg);
+    }
+  }
+  @keyframes verticalReset {
+    to {
+      transform: rotateX(-180deg);
+    }
+  }
+}

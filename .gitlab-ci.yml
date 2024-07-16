@@ -1,0 +1,43 @@
+variables:
+      TEST_DIR: /data/wwwroot/static/component/test
+      PROD_DIR: /data/wwwroot/static/component/prod
+
+stages:
+    - build
+
+job1:
+    stage: build
+    cache:
+        key: node_modules
+        paths:
+            - node_modules
+    script:
+        - id
+        - pwd
+        - cnpm install
+        - cnpm run docs:build
+        - mkdir -p ${TEST_DIR}
+        - rsync -avq --delete docs-dist/ ${TEST_DIR}
+    tags:
+        - develop
+    only:
+        - dev
+
+
+job2:
+    stage: build
+    cache:
+        key: node_modules
+        paths:
+            - node_modules
+    script:
+        - id
+        - pwd
+        - cnpm install
+        - cnpm run docs:build
+        - mkdir -p ${PROD_DIR}
+        - rsync -avq --delete docs-dist/  ${PROD_DIR}
+    tags:
+        - develop
+    only:
+        - main

@@ -1,0 +1,393 @@
+@import '../../../styles/var.less';
+
+.@{rv-prefix}-carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .carousel-warper-slide,
+  .carousel-warper-fade {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    > * {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .item-current {
+      position: relative;
+      z-index: 1;
+    }
+  }
+  // 动画样式
+  .carousel-slide-horizontal {
+    > *:not(.item-current) {
+      visibility: hidden;
+    }
+
+    .item-slide-out {
+      display: block;
+      animation-name: carousel-slide-x-out;
+    }
+
+    .item-slide-in {
+      display: block;
+      animation-name: carousel-slide-x-in;
+    }
+
+    &.slide-reverse {
+      .item-slide-out {
+        display: block;
+        animation-name: carousel-slide-x-out-reverse;
+      }
+
+      .item-slide-in {
+        display: block;
+        animation-name: carousel-slide-x-in-reverse;
+      }
+    }
+  }
+
+  .carousel-slide-vertical {
+    > *:not(.item-current) {
+      visibility: hidden;
+    }
+
+    .item-slide-out {
+      display: block;
+      animation-name: carousel-slide-y-out;
+    }
+
+    .item-slide-in {
+      display: block;
+      animation-name: carousel-slide-y-in;
+    }
+
+    &.slide-reverse {
+      .item-slide-out {
+        display: block;
+        animation-name: carousel-slide-y-out-reverse;
+      }
+
+      .item-slide-in {
+        display: block;
+        animation-name: carousel-slide-y-in-reverse;
+      }
+    }
+  }
+
+  .carousel-warper-fade {
+    > * {
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+    }
+
+    .item-current {
+      opacity: 1;
+    }
+  }
+  // 箭头样式
+  .carousel-arrow {
+    > div {
+      position: absolute;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      color: rgba(255, 255, 255, 1);
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      cursor: pointer;
+
+      > svg {
+        font-size: 16px;
+      }
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.6);
+      }
+    }
+
+    .arrow-left {
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+
+    .arrow-right {
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+    }
+
+    .arrow-top {
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .arrow-bottom {
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  .carousel-arrow-hover > div {
+    opacity: 0;
+    transition: all 0.3s;
+  }
+
+  &:hover {
+    .carousel-arrow-hover > div {
+      opacity: 1;
+    }
+  }
+
+  // 指示器样式
+  .indicator-wrapper {
+    position: absolute;
+    z-index: 2;
+
+    &.indicator-wrapper-top {
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 20%;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0%) 87%);
+    }
+
+    &.indicator-wrapper-bottom {
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 20%;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0%) 13%, rgba(0, 0, 0, 0.2) 100%);
+    }
+
+    &.indicator-wrapper-left {
+      top: 0;
+      left: 0;
+      width: 20%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0%) 87%);
+    }
+
+    &.indicator-wrapper-right {
+      top: 0;
+      right: 0;
+      width: 20%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0%) 13%, rgba(0, 0, 0, 0.2) 100%);
+    }
+
+    &.indicator-wrapper-outer {
+      right: 0;
+      left: 0;
+      background: none;
+    }
+
+    .indicator {
+      position: absolute;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    .indicator-bottom {
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .indicator-top {
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .indicator-left {
+      top: 50%;
+      left: 12px;
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    .indicator-right {
+      top: 50%;
+      right: 12px;
+      transform: translate(50%, -50%) rotate(90deg);
+    }
+  }
+  // 位于外部的指示器样式
+  .indicator-outer {
+    left: 50%;
+    padding: 6px;
+    border-radius: 0;
+    transform: translateX(-50%);
+    // background-color: rgba(99, 99, 99, 0.1);
+
+    &.indicator-dot {
+      bottom: -18px;
+    }
+
+    &.indicator-line {
+      bottom: -18px;
+    }
+
+    &.indicator-slider {
+      bottom: -18px;
+      padding: 0;
+      background-color: rgba(99, 99, 99, 0.3);
+    }
+
+    .indicator-item {
+      background-color: rgba(99, 99, 99, 0.3);
+
+      &:hover,
+      &.indicator-item-active {
+        background-color: rgba(99, 99, 99, 0.7);
+      }
+    }
+  }
+
+  // 图标样式
+  .indicator-item {
+    display: inline-block;
+    background-color: hsla(0, 0%, 100%, 0.3);
+    border-radius: 2px;
+    cursor: pointer;
+
+    &:hover,
+    &.indicator-item-active {
+      background-color: #fff;
+    }
+  }
+
+  .indicator-dot {
+    .indicator-item {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+
+      &:not(:last-child) {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  .indicator-line {
+    .indicator-item {
+      width: 12px;
+      height: 4px;
+
+      &:not(:last-child) {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  .indicator-slider {
+    width: 40px;
+    height: 4px;
+    background-color: hsla(0, 0%, 100%, 0.3);
+    border-radius: 2px;
+    cursor: pointer;
+
+    .indicator-item {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      transition: left 0.3s;
+    }
+  }
+}
+
+@keyframes carousel-slide-x-in {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes carousel-slide-x-out {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes carousel-slide-x-in-reverse {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes carousel-slide-x-out-reverse {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes carousel-slide-y-in {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes carousel-slide-y-out {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes carousel-slide-y-in-reverse {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes carousel-slide-y-out-reverse {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(100%);
+  }
+}

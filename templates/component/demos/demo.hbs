@@ -1,0 +1,15 @@
+import React from 'react';
+import { DemoBlock } from 'demos';
+import { {{pascalCase name}}, Flex } from 'web-component';
+
+export default () => {
+  return (
+    <>
+      <DemoBlock title="组件展示">
+        <Flex wrap>
+          <{{pascalCase name}} />
+        </Flex>
+      </DemoBlock>
+    </>
+  );
+};
