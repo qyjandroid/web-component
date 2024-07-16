@@ -49,7 +49,7 @@
     (n.o = function (e, t) {
       return Object.prototype.hasOwnProperty.call(e, t);
     }),
-    (n.p = '/'),
+    (n.p = '/web-component/'),
     n((n.s = 0));
 })({
   '++zV': function (e, t, n) {
@@ -8756,7 +8756,7 @@
         return a;
       });
     var r = n('YS25'),
-      o = { basename: '/' };
+      o = { basename: '/web-component/' };
     window.routerBase && (o.basename = window.routerBase);
     var a = Object({ NODE_ENV: 'production' }).__IS_SERVER ? null : Object(r['a'])(o),
       i = function () {
@@ -41067,7 +41067,7 @@
               exact: !0,
               meta: {
                 filePath: 'docs/index.md',
-                updatedTime: 1721093364e3,
+                updatedTime: 1721097562e3,
                 hero: {
                   title: 'web-component',
                   desc: '<div class="markdown"><p>\u81f4\u529b\u4e8e\u6253\u9020\u4e30\u5bcc\u591a\u5f69\u7684 web-component \u7ec4\u4ef6\u5e93</p></div>',
@@ -41101,7 +41101,7 @@
               exact: !0,
               meta: {
                 filePath: 'docs/guide/contribute.md',
-                updatedTime: 1721093364e3,
+                updatedTime: 1721097562e3,
                 title: '\u5f00\u53d1\u6307\u5357',
                 nav: { title: '\u5f00\u53d1\u6307\u5357', path: '/guide' },
                 slugs: [
@@ -41132,7 +41132,7 @@
               exact: !0,
               meta: {
                 filePath: 'docs/guide/import-on-demand.md',
-                updatedTime: 1721093364e3,
+                updatedTime: 1721097562e3,
                 title: '\u6309\u9700\u52a0\u8f7d',
                 nav: { title: '\u5f00\u53d1\u6307\u5357', path: '/guide' },
                 slugs: [
@@ -41151,7 +41151,7 @@
               exact: !0,
               meta: {
                 filePath: 'docs/guide/README.md',
-                updatedTime: 1721093364e3,
+                updatedTime: 1721097562e3,
                 title: '\u5173\u4e8e web component',
                 nav: { title: '\u5f00\u53d1\u6307\u5357', path: '/guide' },
                 slugs: [
