@@ -2,10 +2,10 @@ import { defineConfig } from 'dumi';
 import { resolve } from 'path';
 
 let publicPath = '/';
-console.log('env==', process.env.NODE_ENV);
-if (process.env.NODE_ENV == 'production') {
-  publicPath = '/component/prod/';
-}
+// console.log('env==', process.env.NODE_ENV);
+// if (process.env.NODE_ENV == 'production') {
+//   publicPath = '/component/prod/';
+// }
 
 export default defineConfig({
   title: 'web-component',
