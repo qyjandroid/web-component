@@ -33294,7 +33294,7 @@
       return 'BASEMENT' === Object({ NODE_ENV: 'production' }).PLATFORM_TYPE;
     }
     var p = function () {
-      return d() ? '_demos' : '~demos';
+      return d() ? '_demos' : 'demos';
     };
     t.getDemoRouteName = p;
     var h = function (e, t) {
@@ -40770,7 +40770,7 @@
     function l() {
       var e = [
         {
-          path: '/~demos/:uuid',
+          path: '/demos/:uuid',
           layout: !1,
           wrappers: [n('afA6').default, n('cW5v').default],
           component: (e) => {
@@ -40804,7 +40804,7 @@
             }
           },
         },
-        { path: '/_demos/:uuid', redirect: '/~demos/:uuid' },
+        { path: '/_demos/:uuid', redirect: '/demos/:uuid' },
         {
           __dumiRoot: !0,
           layout: !1,
